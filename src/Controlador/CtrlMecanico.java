@@ -22,7 +22,34 @@ public class CtrlMecanico implements MouseListener  {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        if(e.getSource() == vista.btn_agregar){
+            modelo.setNombre(vista.txt_Nombre.getText());
+            modelo.setEdad(Integer.parseInt(vista.txt_Edad.getText()));
+            modelo.setPeso(Integer.parseInt(vista.txt_Peso.getText()));
+            modelo.setCorreo(vista.txt_Correo.getText());
+            
+            modelo.Guardar();   
+            modelo.Mostrar(vista.jb_Mecanico);
+        }
         
+        if(e.getSource() == vista.btn_Eliminar){
+            modelo.Eliminar(vista.jb_Mecanico);
+            modelo.Mostrar(vista.jb_Mecanico);
+        }
+        
+        if(e.getSource() == vista.jb_Mecanico){
+            modelo.cargarDatosTabla(vista);
+        }
+        
+        if(e.getSource() == vista.btn_Editar){
+            modelo.setNombre(vista.txt_Nombre.getText());
+            modelo.setEdad(Integer.parseInt(vista.txt_Edad.getText()));
+            modelo.setPeso(Integer.parseInt(vista.txt_Peso.getText()));
+            modelo.setCorreo(vista.txt_Correo.getText());
+            
+            modelo.Actualizar(vista.jb_Mecanico);
+            modelo.Mostrar(vista.jb_Mecanico);
+        }
     }
 
     @Override
